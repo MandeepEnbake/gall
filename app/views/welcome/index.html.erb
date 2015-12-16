@@ -1,4 +1,5 @@
-
+<%= link_to 'Albums', controller: 'albums' %>
+<%= link_to 'New Albums', new_album_path %>
 <% if user_signed_in? %>
 
 <h3>you have succesfully signed in</h3>
@@ -13,5 +14,5 @@
 <% end %>
 
 <% if user_signed_in? %>
-<h1>Welcome to Gallery <b><%= current_user %></b></h1
+<h1>Welcome to Gallery </h1
 <% end %>
