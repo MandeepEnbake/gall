@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <h1>New Album</h1>
 
 <%= form_for :album, url: albums_path do |f| %>
@@ -18,7 +19,14 @@
 		<%= f.text_field :title %>
 	</p>
 	<p>
+	</p>
+	<p>
 	<%= f.submit %>
 	</p>
 <% end %>
 <%= link_to 'Back', albums_path %>
+<% else %>
+<%= link_to "Sign In", new_user_session_path, :method => :get %>
+<%= link_to "Sign up", new_user_registration_path, :method => :get %>
+
+<% end %>
