@@ -1,6 +1,6 @@
 <h1>Updating Album</h1>
 
-<%= form_for :album, url: albums_path do |f| %>
+<%= form_for :album, url: album_path , :method=>"PUT" do |f| %>
 <% if @album.errors.any? %>
 <div id="error_explanation">
 <h2>

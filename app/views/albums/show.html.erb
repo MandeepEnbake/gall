@@ -1,5 +1,15 @@
 <p>
 <stron> Title:</stron>
 <%= @album.title %>
+<h2>Add an Image</h2>
+<%= form_for([@album, @album.images.build]) do |f| %>
+	<p>
+		<% f.label :tags %>
+		<% f.text_field :tags%>
+	</p>
+	<p>
+		<% f.submit %>
+	</p>
+<% end %>
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
