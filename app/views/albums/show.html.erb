@@ -1,19 +1,60 @@
 <p><% if user_signed_in? %>
-<strong> Title:</strong>
-<%= @album.title %>
-<%= form_for@album, :html => { :multipart => true } do |f| %>
-	<p>
-		
-	</p>
-	<p>
-		<% f.submit %>
-	</p>
+<h1><strong> Title:</strong>
+<%= @album.title %></h1>
+<table>
+<% @album.images.each do |image| %>
+<tr>
+	<strong>Images : </strong>
+	<td><%= link_to image_tag(image.picture.url), image.picture.url %></td>
+	<td><%= link_to 'Destroy', album_image_path(params[:id], image ), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+</tr>
 <% end %>
-<h3><%= link_to 'Add Image', new_album_image_path(@album) %></h3>
+</table>
+<h3><%= link_to 'Add Image', new_album_image_path(@album) %> | 
+<%= link_to 'Show Images', album_images_path(@album) %></h3>
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
+
+<h1>Photo Description</h1>
+<% @album.photos.each do |photo| %>
+<p>
+	<strong>Photo : </strong>
+	description :<%= photo.description %>
+	<%= image_tag photo.snap.url %>
+</p>
+<% end %>
+
+<h1>add an Description</h1>
+
+<%= form_for([@album, @album.photos.build], :html => { :multipart => true }) do |f| %>
+<p>
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+</p>
+<p>
+	<%= f.label :tag_list, "Tags ( Separated by commas )" %><br/>
+	<%= f.text_field :tag_list %>
+</p>
+<p>
+	<%= f.file_field :snap %>
+</p>
+<p>
+	<%= f.submit %>
+</p>
+<% end %>
+
 <% else %>
+
 <%= link_to "Sign In", new_user_session_path, :method => :get %>
 <%= link_to "Sign up", new_user_registration_path, :method => :get %>
+
+<% if @album.photos.any? %>
+yes  snaps
+<% else %>
+no  snaps
+<% end %>
+
+
+<%= link_to "Upload new pics!", new_album_photo_path(@user, @album) %>
 
 <% end %>
