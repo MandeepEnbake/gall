@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+<h1>Albums List</h1>
+<%= link_to 'New Albums', new_album_path %>
+<table>
+	<tr>
+		<th>Album Name</th>
+	</tr>
+	<% @album.each do |album| %>
+	<tr>
+		<td><%= album.title %></td>
+		<td><%= link_to 'Show', album_path(album) %></td>
+		<td><%= link_to 'Edit', edit_album_path(album) %></td>
+		<td><%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+	</tr>
+	<% end %>
+</table>
+<% else %>
+<%= link_to "Sign In", new_user_session_path, :method => :get %>
+<%= link_to "Sign up", new_user_registration_path, :method => :get %>
+
+<% end %>
