@@ -1,19 +1,19 @@
 <% if user_signed_in? %>
 <h1>Albums List</h1>
-<%= link_to 'New Albums', new_album_path %>
-<table>
-	<tr>
-		<th>Album Name</th>
-	</tr>
-	<% @album.each do |album| %>
-	<tr>
-		<td><%= album.title %></td>
-		<td><%= link_to 'Show', album_path(album) %></td>
-		<td><%= link_to 'Edit', edit_album_path(album) %></td>
-		<td><%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: 'Are you sure?'} %></td>
-	</tr>
-	<% end %>
-</table>
+<div class="btn btn-default"><%= link_to 'New Albums', new_album_path %></div>
+<div class="col-md-8">
+<ul class="list-group">
+<% @album.each do |album| %>
+  <li class="list-group-item"><%= album.title %>
+  <div class="pull-right">
+  <div class="btn btn-default"><%= link_to 'Show', album_path(album) %></div>
+  <div class="btn btn-default"><%= link_to 'Edit', edit_album_path(album) %></div>
+  <div class="btn btn-danger" style="color:white"><b><%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: 'Are you sure?'} %></b></div>
+  </div>
+  </li>
+  <% end %>
+</ul>
+</div>
 <% else %>
 <%= link_to "Sign In", new_user_session_path, :method => :get %>
 <%= link_to "Sign up", new_user_registration_path, :method => :get %>

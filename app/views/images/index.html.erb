@@ -1,9 +1,23 @@
-Index :
-<h3><%= link_to 'Add Image', new_album_image_path(params[:album_id]) %><hr/>
-<table>
-<% @image.each do |image| %>
-	<tr><td><%= image %> </td>
-	<td><%= link_to image_tag(image.picture.url), image.picture.url %></td>
-	<td><%= link_to 'Destroy', album_image_path(params[:album_id], image ), method: :delete, data: { confirm: 'Are you sure?'} %>
-	<% end %></td></tr>
-</table>
+<div class="col-md-12 col-md-offset-9">
+<div class="btn btn-default"><%= link_to 'Add Image', new_album_image_path(params[:album_id]) %></div></div><hr/><br/>
+
+
+<div class="container">
+	<div class="row">
+		<div class="list-group gallery">
+		<% @image.each do |image| %>
+            <div class="col-sm-4 col-xs-6 col-md-3 col-lg-3">
+                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+                    <%= link_to image_tag(image.picture.url), image.picture.url(:thumb) %>
+                    <div class="text-right">
+                        <small class="text-muted">Image Tags :<%= render image.tags %></small>
+                        <div class="btn btn-default"><%= link_to 'Destroy', album_image_path(params[:album_id], image ), method: :delete, data: { confirm: 'Are you sure?'} %></div>
+                    </div> <!-- text-right / end -->
+                </a>
+            </div>
+        <% end %>     
+        </div>
+    </div>
+</div>
+
+

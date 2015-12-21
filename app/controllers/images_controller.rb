@@ -7,16 +7,19 @@ class ImagesController < ApplicationController
 	end
 	def new
 		@image_new = Image.new(:album_id => params[:album_id])
+
 	end
 	def create
 		# render plain: params[:image_params].inspect
 		@image = Image.new(image_params)
+		# @image = set_tag_list_on(:image_tags, :parse => true )
+		# @image = tag_list_on(:image_tags)
 		if @image.save
 		# redirect_to album_path(Album.find(params[:album_id]))
 		# redirect_to album_image_path(params[:id])
 		# render article_image_path(params[:album_id])
 		# link_to album_image_path(params[:album_id], Image.find(params[:id]))
-		render 'show'
+		redirect_to album_images_path(params[:album_id])
 		else 
 		render 'new'
 		end
@@ -31,6 +34,6 @@ class ImagesController < ApplicationController
 
 	private 
 	def image_params
-		params.require(:image).permit(:picture, :album_id )
+		params.require(:image).permit(:picture, :album_id, :tag_list )
 	end
 end

@@ -1,18 +1,18 @@
-<%= link_to 'Albums', controller: 'albums' %>
-<%= link_to 'New Albums', new_album_path %>
 <% if user_signed_in? %>
-
-<h3>you have succesfully signed in</h3>
-<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-
+<div id="main-container" class="container">
+<div class="row">
+        <div class="col-xs-3">
+	<%= link_to 'Albums', controller: 'albums' %>	
+	<%= link_to 'New Albums', new_album_path %>
+	<h3>you have succesfully signed in</h3>
+	<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+	<h1>Welcome to Gallery </h1>
+	</div></div></div>
 <% else %>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<h1><img src="assets/Welcome.jpg"></h1>
+<div class="btn btn-default">	<%= link_to "Sign In", new_user_session_path, :method => :get %></div>
+<div class="btn btn-default">	<%= link_to "Sign up", new_user_registration_path, :method => :get %></div></div></div>
 
-<h1> Landing Page Comes Here </h1>
-<%= link_to "Sign In", new_user_session_path, :method => :get %>
-<%= link_to "Sign up", new_user_registration_path, :method => :get %>
-
-<% end %>
-
-<% if user_signed_in? %>
-<h1>Welcome to Gallery </h1
 <% end %>

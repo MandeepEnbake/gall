@@ -4,8 +4,9 @@
 <table>
 <% @album.images.each do |image| %>
 <tr>
-	<strong>Images : </strong>
+	<td><strong>Images : </strong></td>
 	<td><%= link_to image_tag(image.picture.url), image.picture.url %></td>
+	<td><%= render image.tags %></td>
 	<td><%= link_to 'Destroy', album_image_path(params[:id], image ), method: :delete, data: { confirm: 'Are you sure?'} %></td>
 </tr>
 <% end %>
@@ -24,26 +25,6 @@
 </p>
 <% end %>
 
-<h1>add an Description</h1>
-
-<%= form_for([@album, @album.photos.build], :html => { :multipart => true }) do |f| %>
-<p>
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-</p>
-<p>
-	<%= f.label :tag_list, "Tags ( Separated by commas )" %><br/>
-	<%= f.text_field :tag_list %>
-</p>
-<p>
-	<%= f.file_field :snap %>
-</p>
-<p>
-	<%= f.submit %>
-</p>
-<% end %>
-
-<% else %>
 
 <%= link_to "Sign In", new_user_session_path, :method => :get %>
 <%= link_to "Sign up", new_user_registration_path, :method => :get %>
@@ -53,8 +34,5 @@ yes  snaps
 <% else %>
 no  snaps
 <% end %>
-
-
-<%= link_to "Upload new pics!", new_album_photo_path(@user, @album) %>
 
 <% end %>
