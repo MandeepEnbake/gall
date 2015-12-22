@@ -1,13 +1,13 @@
 <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),:class => 'form-horizontal') do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, :class => 'col-sm-2 control-label' %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, :class => 'col-sm-2 control-label' %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
@@ -22,5 +22,6 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+<div class="test">
 <%= render "devise/shared/links" %>
+</div>
