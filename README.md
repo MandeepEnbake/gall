@@ -1,2 +1,0 @@
-# gall
-basic_gallery
