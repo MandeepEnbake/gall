@@ -3,7 +3,7 @@
 <div class="row"><br/><br/></div>
 <h1>Albums List</h1>
 <div class="btn btn-default"><%= link_to 'New Albums', new_album_path %></div>
-<div class="col-md-8">
+<div class="col-md-8 col-md-offset-1">
 <ul class="list-group">
 <% @album.each do |album| %>
   <li class="list-group-item"><%= album.title %>

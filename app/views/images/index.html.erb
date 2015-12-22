@@ -1,3 +1,5 @@
+<%= render 'navbar' %>
+<div class="row"><br/><br/><br/></div>
 <div class="col-md-12 col-md-offset-9">
 <div class="btn btn-default"><%= link_to 'Add Image', new_album_image_path(params[:album_id]) %></div></div><hr/><br/>
 
@@ -7,13 +9,13 @@
 		<div class="list-group gallery">
 		<% @image.each do |image| %>
             <div class="col-sm-4 col-xs-6 col-md-3 col-lg-3">
-                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
-                    <%= link_to image_tag(image.picture.url), image.picture.url(:thumb) %>
+                <div class="thumbnail fancybox" rel="ligthbox" href="<%= image.picture.url %>">
+                    <div style="height:100px;width:150px"><%= link_to image_tag(image.picture.url), image.picture.url(:thumb) %></div>
                     <div class="text-right">
-                        <small class="text-muted">Image Tags :<%= render image.tags %></small>
+                        <p><small class="text-muted">Image Tags :<%= render image.tags %></small></p>
                         <div class="btn btn-default"><%= link_to 'Destroy', album_image_path(params[:album_id], image ), method: :delete, data: { confirm: 'Are you sure?'} %></div>
                     </div> <!-- text-right / end -->
-                </a>
+                </div>
             </div>
         <% end %>     
         </div>
