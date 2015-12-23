@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
  
-
+# root 'Devise::sessions#new'
  root 'welcome#index'
 
  # root 'album#index'
