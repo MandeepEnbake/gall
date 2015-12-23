@@ -7,7 +7,7 @@
 <div class="col-md-8 col-md-offset-1">
 <ul class="list-group">
 <% @album.each do |album| %>
-  <li class="list-group-item"><%= album.title %>
+  <li class="list-group-item" style="padding:22px 10px !important;"><%= album.title %>
   <div class="pull-right">
   <div class="btn btn-default"><%= link_to 'Show', album_images_path(album) %></div>
   <div class="btn btn-default"><%= link_to 'Edit', edit_album_path(album) %></div>
