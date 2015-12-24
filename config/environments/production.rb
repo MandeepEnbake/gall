@@ -14,7 +14,7 @@ Rails.application.configure do
     :port => 587,
     :domain => ENV["gamil.com"],
     :user_name => ENV["mandeep.enbake@gmail.com"],
-    :password => ENV["enbake123"],
+    :password => ENV["somepasword"],
     :authentication => :plain,
     :enable_starttls_auto => true }
 
