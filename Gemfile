@@ -28,6 +28,7 @@ gem 'devise'
 gem "paperclip", "~> 4.3"
 gem 'acts-as-taggable-on'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'haml'
 
 
 
@@ -45,6 +46,7 @@ end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'foreman'
   gem 'byebug'
   gem 'sqlite3'
 end
