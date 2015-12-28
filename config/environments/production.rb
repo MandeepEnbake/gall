@@ -10,13 +10,13 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => ENV["gamil.com"],
-    :user_name => ENV["mandeep.enbake@gmail.com"],
-    :password => ENV["enbake123"],
-    :authentication => :plain,
-    :enable_starttls_auto => true }
+       :address              => "smtp.gmail.com",
+       :port                 => 587,
+       :domain               =>'gamil.com',
+       :user_name            => 'mandeep.enbake@gmail.com',
+       :password             => 'enbake123',
+       :authentication       => :plain,
+       :enable_starttls_auto => true  }
 
   config.cache_classes = true
 
